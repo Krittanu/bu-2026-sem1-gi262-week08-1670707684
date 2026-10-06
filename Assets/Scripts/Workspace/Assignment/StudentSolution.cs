@@ -1,66 +1,113 @@
 using System;
+
 using System.Collections.Generic;
 
 namespace Assignment
+
 {
+
     public class StudentSolution
+
     {
+
         #region Lecture
 
         public int LCT01_RecursiveFactorial(int n)
+
         {
+
             return Factorial(n);
+
         }
 
         private int Factorial(int n)
+
         {
+
             // base case
+
+            if (n <= 1) return 1;
 
             // recursive case
 
-            return -1;
+            return n * Factorial(n - 1);
+
+            //ถูกเรียกได้สูงสุด 10,000 - 80,000
+
         }
 
         public int LCT02_RecursiveFibonacci(int n)
+
         {
+
             return Fibonacci(n);
+
         }
 
         private int Fibonacci(int n)
+
         {
+
             // base case
+
+            if (n <= 1) return n;
+
+            //n<-1
 
             // recursive case
 
-            return -1;
+            // F(n-1) + F(n-2)
+
+            return Fibonacci(n - 1) + Fibonacci(n - 2);
+
         }
 
         public int LCT03_RecursiveSumOfOneToN(int n)
+
         {
+
             return SumOfOneToN(n);
+
         }
 
         private int SumOfOneToN(int n)
+
         {
+
             // base case
+
+            if (n <= 1) return n;
+
+            // n = 0
 
             // recursive case
 
-            return -1;
+            // n + sum(n-1)
+
+            return n + SumOfOneToN(n - 1);
+
         }
 
         public int LCT04_RecursiveSumOfNumbers(int[] numbers)
+
         {
+
             return SumOfNumbers(numbers, 0);
+
         }
 
         private int SumOfNumbers(int[] numbers, int index)
+
         {
+
             // base case
+
+            if (index >= numbers.Length) return 0;
 
             // recursive case
 
-            return -1;
+            return numbers[index] + SumOfNumbers(numbers, index + 1);
+
         }
 
         #endregion
@@ -68,46 +115,109 @@ namespace Assignment
         #region Assignment
 
         public int ASN01_RecursivePower(int baseNum, int exponent)
+
         {
+
             return Power(baseNum, exponent);
+
         }
 
         private int Power(int baseNum, int exponent)
+
         {
-            return -1;
+
+            // base case
+
+            if (exponent == 0) return 1;
+
+            // recursive case
+
+            return baseNum * Power(baseNum, exponent - 1);
+
         }
 
         public bool ASN02_IsPalindrome(string str)
+
         {
+
             return IsPalindrome(str, 0, str.Length - 1);
+
         }
 
         private bool IsPalindrome(string str, int start, int end)
+
         {
-            return false;
+
+            // base case
+
+            if (start >= end) return true;
+
+            if (str[start] != str[end]) return false;
+
+            // recursive case
+
+            return IsPalindrome(str, start + 1, end - 1);
+
         }
 
         public int ASN03_RecursiveGCD(int a, int b)
+
         {
+
             return GCD(a, b);
+
         }
 
         private int GCD(int a, int b)
+
         {
-            return -1;
+
+            // base case
+
+            if (b == 0) return a;
+
+            // recursive case
+
+            return GCD(b, a % b);
+
         }
 
         public int ASN04_RecursiveBinarySearch(int[] arr, int target)
+
         {
+
             return BinarySearch(arr, target, 0, arr.Length - 1);
+
         }
 
         private int BinarySearch(int[] arr, int target, int low, int high)
+
         {
-            return -1;
+
+            // base case
+
+            if (low > high) return -1;
+
+            int mid = low + (high - low) / 2;
+
+            if (arr[mid] == target) return mid;
+
+            // recursive case
+
+            if (arr[mid] > target)
+
+            {
+
+                return BinarySearch(arr, target, low, mid - 1);
+
+            }
+
+            return BinarySearch(arr, target, mid + 1, high);
+
         }
 
         #endregion
 
     }
+
 }
